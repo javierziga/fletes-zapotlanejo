@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fletes Zapotlanejo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .tarifas {
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+        .tarifas table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .tarifas th, .tarifas td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fletes Zapotlanejo</h1>
+        <p>Teléfono: 3340127365</p>
+    </header>
+    <div class="container">
+        <h2>Nuestras Tarifas</h2>
+        <div class="tarifas">
+            <table>
+                <tr>
+                    <th>Ruta</th>
+                    <th>Precio (MXN)</th>
+                </tr>
+                <tr>
+                    <td>Dentro de Zapotlanejo</td>
+                    <td>$600</td>
+                </tr>
+                <tr>
+                    <td>Zapotlanejo a La Laja</td>
+                    <td>$650</td>
+                </tr>
+                <tr>
+                    <td>Zapotlanejo a Villas</td>
+                    <td>$650</td>
+                </tr>
+                <tr>
+                    <td>Zapotlanejo a Tonalá</td>
+                    <td>$700</td>
+                </tr>
+                <tr>
+                    <td>Dentro de Villas Andalucía</td>
+                    <td>$650</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Fletes Zapotlanejo - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
