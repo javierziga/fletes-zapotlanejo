@@ -7,79 +7,214 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
         header {
-            background-color: #333;
+            background-color: #1E4E79;
             color: white;
-            padding: 15px;
+            padding: 10px 0;
+            text-align: center;
         }
         .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .welcome-message {
+            background-color: #eaf5e1;
             padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
-        .tarifas {
-            max-width: 600px;
-            margin: auto;
-            text-align: left;
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .tarifas table {
+        input[type="text"], input[type="tel"], input[type="email"], input[type="number"] {
             width: 100%;
-            border-collapse: collapse;
-        }
-        .tarifas th, .tarifas td {
-            border: 1px solid black;
             padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        footer {
-            background-color: #333;
+        .radio-group {
+            margin: 10px 0;
+        }
+        .radio-group input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #1E4E79;
             color: white;
-            padding: 15px;
-            position: absolute;
-            bottom: 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #174e6d;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .line {
+            border-left: 2px solid #ccc;
+            height: 200px;
+        }
+        .direccion-section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .direccion-section label {
+            margin-top: 10px;
+        }
+        .direccion-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .direccion-inputs input {
             width: 100%;
+        }
+        .additional-info {
+            margin-top: 20px;
+        }
+        .additional-info input, .additional-info select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Fletes Zapotlanejo</h1>
-        <p>Teléfono: 3340127365</p>
     </header>
+
     <div class="container">
-        <h2>Nuestras Tarifas</h2>
-        <div class="tarifas">
-            <table>
-                <tr>
-                    <th>Ruta</th>
-                    <th>Precio (MXN)</th>
-                </tr>
-                <tr>
-                    <td>Dentro de Zapotlanejo</td>
-                    <td>$600</td>
-                </tr>
-                <tr>
-                    <td>Zapotlanejo a La Laja</td>
-                    <td>$650</td>
-                </tr>
-                <tr>
-                    <td>Zapotlanejo a Villas</td>
-                    <td>$650</td>
-                </tr>
-                <tr>
-                    <td>Zapotlanejo a Tonalá</td>
-                    <td>$700</td>
-                </tr>
-                <tr>
-                    <td>Dentro de Villas Andalucía</td>
-                    <td>$650</td>
-                </tr>
-            </table>
+        <div class="welcome-message">
+            <p><strong>¡Bienvenido a Fletes Zapotlanejo!</strong></p>
+            <p>Somos tu aliado confiable en fletes, mudanzas y servicios de transporte. Ofrecemos soluciones rápidas, seguras y económicas para mover tus pertenencias, electrodomésticos, paquetería y más. ¡Nos adaptamos a tus necesidades!</p>
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 Fletes Zapotlanejo - Todos los derechos reservados.</p>
-    </footer>
-</body>
-</html>
+
+        <form id="cotizacionForm">
+            <h2>Cotización Rápida</h2>
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            
+            <label for="correo">Correo (opcional):</label>
+            <input type="email" id="correo" name="correo">
+            
+            <label for="preferencia">Te contactaremos lo más pronto posible, ¿cómo quieres que se te contacte?</label>
+            <div class="radio-group">
+                <input type="radio" id="whatsapp" name="preferencia" value="whatsapp" required>
+                <label for="whatsapp">WhatsApp</label>
+                <input type="radio" id="llamada" name="preferencia" value="llamada">
+                <label for="llamada">Llamada</label>
+                <input type="radio" id="correo-preferencia" name="preferencia" value="correo">
+                <label for="correo-preferencia">Correo</label>
+            </div>
+
+            <button type="button" onclick="mostrarDirecciones()">Enviar</button>
+        </form>
+
+        <!-- Sección de dirección de origen y destino, oculta inicialmente -->
+        <div id="direccionesForm" class="hidden">
+            <h2>Direcciones</h2>
+            
+            <!-- Origen -->
+            <div class="direccion-section">
+                <h3>Origen</h3>
+                <div class="direccion-inputs">
+                    <div>
+                        <label for="municipio-origen">Municipio:</label>
+                        <input type="text" id="municipio-origen" name="municipio-origen" required>
+                    </div>
+                    <div>
+                        <label for="colonia-origen">Colonia:</label>
+                        <input type="text" id="colonia-origen" name="colonia-origen" required>
+                    </div>
+                    <div>
+                        <label for="calle-origen">Calle:</label>
+                        <input type="text" id="calle-origen" name="calle-origen" required>
+                    </div>
+                    <div>
+                        <label for="numero-origen">Número de Casa:</label>
+                        <input type="text" id="numero-origen" name="numero-origen" required>
+                    </div>
+                    <div>
+                        <label for="tipo-vivienda-origen">Tipo de Vivienda:</label>
+                        <select id="tipo-vivienda-origen" name="tipo-vivienda-origen" required>
+                            <option value="casa">Casa</option>
+                            <option value="departamento">Departamento</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="numero-pisos-origen">Número de Pisos:</label>
+                        <input type="number" id="numero-pisos-origen" name="numero-pisos-origen" required>
+                    </div>
+                    <div>
+                        <label for="medio-acceso-origen">Medio de Acceso:</label>
+                        <select id="medio-acceso-origen" name="medio-acceso-origen" required>
+                            <option value="elevador">Elevador</option>
+                            <option value="escalera">Escalera</option>
+                        </select>
+                    </div>
+                    <div class="radio-group">
+                        <label for="cargadores-origen">¿Necesita cargadores?</label>
+                        <input type="radio" id="si-cargadores-origen" name="cargadores-origen" value="si">
+                        <label for="si-cargadores-origen">Sí</label>
+                        <input type="radio" id="no-cargadores-origen" name="cargadores-origen" value="no" checked>
+                        <label for="no-cargadores-origen">No</label>
+                    </div>
+                    <div id="cargadores-numero-origen" class="hidden">
+                        <label for="numero-cargadores-origen">Número de Cargadores:</label>
+                        <select id="numero-cargadores-origen" name="numero-cargadores-origen">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="mas">Más de 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <!-- Destino -->
+            <div class="direccion-section">
+                <h3>Destino</h3>
+                <div class="direccion-inputs">
+                    <div>
+                        <label for="municipio-destino">Municipio:</label>
+                        <input type="text" id="municipio-destino" name="municipio-destino" required>
+                    </div>
+                    <div>
+                        <label for="colonia-destino">Colonia:</label>
+                        <input type="text" id="colonia-destino" name="colonia-destino" required>
+                    </div>
+                    <div>
+                        <label for="calle-destino">Calle:</label>
+                        <input type="text" id="calle-destino" name="calle-destino" required>
+                    </div>
+                    <div>
+                        <label for="numero-destino">Número de Casa:</label>
+                        <input type="text" id="numero-destino" name="
